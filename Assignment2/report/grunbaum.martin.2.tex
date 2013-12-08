@@ -1,0 +1,84 @@
+% !Mode:: "TeX:UTF-8"
+\RequirePackage[l2tabu, orthodox]{nag}
+%\documentclass[a4paper,twocolumn, 11pt]{article}
+\documentclass[a4paper,11pt]{article}
+%%%% FILL THESE OUT %%%%
+\newcommand{\mySubject}{Principles of Computer System Design}
+\newcommand{\myLocation}{DIKU}
+\newcommand{\myAssignment}{Assignment 2}
+\newcommand{\myAuthor}{Martin Grunbaum (martin@itsolveonline.net)}
+\newcommand{\myShortAuthor}{Martin G.}
+
+%%%% PACKAGES %%%%
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[table,usenames,dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{paralist}
+\usepackage{parskip}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{fullpage}
+\usepackage{lmodern}
+\usepackage[nounderscore]{syntax}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{booktabs}
+\usepackage{cleveref}
+
+%%%% PACKAGE SETTINGS & GENERAL ALTERATIONS %%%%
+
+% Page margins
+\renewcommand{\headrulewidth}{0in}
+\setlength\headsep{40pt}
+\setlength\headheight{20pt}
+\addtolength{\textheight}{-20pt}
+\setlength{\columnsep}{20pt}
+
+% Boxed floats
+\floatstyle{boxed}
+\restylefloat{figure}
+
+% MD Frames
+\mdfdefinestyle{stubFrame}{%
+    linecolor=red,
+    linewidth=3pt,
+    leftmargin=1cm,
+    innerleftmargin=20pt,
+    innerrightmargin=20pt,
+    rightmargin=1cm,
+    topline=false,
+    bottomline=false}
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+
+\mdfdefinestyle{theoremstyle}{%
+    linecolor=red,linewidth=2pt,%
+    frametitlerule=true,%
+    frametitlebackgroundcolor=gray!20,
+    innertopmargin=\topskip,
+}
+
+% \maketitle-related
+\title{\mySubject}
+\author{\myAuthor}
+
+% Fancy header
+\pagestyle{fancy}
+\lhead{\footnotesize \myShortAuthor\\\ }
+\chead{\footnotesize\mySubject\\\myAssignment}
+\rhead{\footnotesize\myLocation\\\today}
+\cfoot{\thepage/\pageref*{LastPage}}
+
+\begin{document}
+    \maketitle
+\input{content}
+\end{document}

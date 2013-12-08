@@ -1,0 +1,8 @@
+*.class
+RemoteSystem*
+*.rar
+.metadata
+# Package Files #
+*.jar
+*.war
+*.ear
