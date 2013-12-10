@@ -23,6 +23,7 @@
 \usepackage{lastpage}
 \usepackage{paralist}
 \usepackage{parskip}
+\usepackage[justification=justified,singlelinecheck=false]{caption}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{fullpage}
@@ -45,8 +46,8 @@
 \setlength{\columnsep}{20pt}
 
 % Boxed floats
-\floatstyle{boxed}
-\restylefloat{figure}
+%\floatstyle{boxed}
+%\restylefloat{figure}
 
 % MD Frames
 \mdfdefinestyle{stubFrame}{%
@@ -68,7 +69,7 @@
 }
 
 % \maketitle-related
-\title{\mySubject}
+\title{\mySubject\\\myAssignment}
 \author{\myAuthor}
 
 % Fancy header

@@ -1,0 +1,8 @@
+\BOOKMARK [1][-]{section.1}{Serializability \046 Locking}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Schedule 1}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Schedule 2}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Optimistic Concurrency Control}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Scenario 1}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Scenario 2}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.3}{Scenario 3}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Discussion on the Concurrent Implementation of the Bookstore}{}% 8

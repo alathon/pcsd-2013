@@ -1,5 +1,7 @@
 package com.acertainbookstore.business.tests;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,10 +25,12 @@ import com.acertainbookstore.interfaces.StockManager;
 import com.acertainbookstore.utils.BookStoreException;
 
 import java.util.UUID;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class ConcurrentCertainBookStoreTest {
 	protected static final int GETBOOKS_ITERATIONS = 50;
@@ -41,6 +45,7 @@ public class ConcurrentCertainBookStoreTest {
 	private static Random random = new Random();
 	
 	ExecutorService executor = Executors.newFixedThreadPool(2);
+	ExecutorService biggerExecutor = Executors.newFixedThreadPool(4);
 	
 	private static BookStoreBook generateRandomBook(int isbn) {
 		String author = UUID.randomUUID().toString();
@@ -198,4 +203,61 @@ public class ConcurrentCertainBookStoreTest {
 		}
 	}
 
+	/*
+	@Test
+	public void test3() {
+		final Runnable c1 = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					manager.addCopies(booksToBuy);
+				} catch (BookStoreException ex) {
+					ex.printStackTrace();
+					fail();
+				}
+			}
+		};
+
+		final Runnable t1 = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					List<StockBook> books = manager.getBooks();
+					for(StockBook book : books) {
+						int origAmt = ConcurrentCertainBookStoreTest.baseMap.get(book.getISBN()).getNumCopies();
+						BookCopy copy = ConcurrentCertainBookStoreTest.buyMap.get(book.getISBN());
+						if(copy != null) {
+							int newAmt = origAmt + (copy.getNumCopies() * 5);
+							assertTrue(book.getNumCopies() == newAmt);
+						}
+					}
+				} catch (BookStoreException ex) {
+					ex.printStackTrace();
+					Thread.currentThread().interrupt();
+				}
+			}
+		};
+
+		for(int i = 0; i < 5; i++) {
+			biggerExecutor.submit(c1);
+		}
+		
+		try {
+			biggerExecutor.shutdown();
+			biggerExecutor.awaitTermination(9999, TimeUnit.SECONDS);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+			fail();
+		}
+		
+		Thread t1thread = new Thread(t1);
+		t1thread.start();
+		try {
+			t1thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+	*/
 }
