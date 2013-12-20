@@ -9,9 +9,8 @@ import com.acertainbookstore.business.StockBook;
 import com.acertainbookstore.utils.BookStoreException;
 
 /**
- * These methods needs to be implemented by
- * clients who wants to sell items in the book store.
- * 
+ * StockManager declares a set of methods exposed by the proxies to the clients. These
+ * methods need to be implemented by both the proxies and CertainBookStore.
  */
 public interface StockManager {
 
@@ -36,6 +35,15 @@ public interface StockManager {
 	public void addCopies(Set<BookCopy> bookCopiesSet)
 			throws BookStoreException;
 
+
+	/**
+	 * Books are marked/unmarked as an editor pick
+	 * 
+	 * @return
+	 * @throws BookStoreException
+	 */
+	public void updateEditorPicks(Set<BookEditorPick> editorPicks) throws BookStoreException;
+	
 	/**
 	 * Returns the list of books in the bookstore
 	 * 
@@ -51,15 +59,5 @@ public interface StockManager {
 	 * @throws BookStoreException
 	 */
 	public List<StockBook> getBooksInDemand() throws BookStoreException;
-
-	/**
-	 * Books are marked/unmarked as an editor pick
-	 * 
-	 * @return
-	 * @throws BookStoreException
-	 */
-	public void updateEditorPicks(Set<BookEditorPick> editorPicks) throws BookStoreException;
-
-	public void clearBooks() throws BookStoreException;
 
 }

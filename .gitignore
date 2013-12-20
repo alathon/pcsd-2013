@@ -1,4 +1,12 @@
 *.class
+*.zip
+*.pdf
+*.out
+*.fdb_latexmk
+*.aus
+*.fls
+*.aux
+*.log*
 RemoteSystem*
 *.rar
 .metadata

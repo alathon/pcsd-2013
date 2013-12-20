@@ -145,4 +145,13 @@ public class StockManagerHTTPProxy implements StockManager {
 		throw new BookStoreException();
 	}
 
+	@Override
+	public void clearBooks() throws BookStoreException {
+		ContentExchange exc = new ContentExchange();
+		String url = serverAddress + "/" + BookStoreMessageTag.CLEARBOOKS;
+		exc.setMethod("GET");
+		exc.setURL(url);
+		BookStoreUtility.SendAndRecv(this.client, exc);
+	}
+
 }

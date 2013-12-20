@@ -1,0 +1,26 @@
+\section{Changes to the code}
+\begin{itemize}
+    \item Changed servers and clients to read config files properly using
+        ClassLoader instead of an absolute path.
+    \item Changed HTTP Proxy slaveAddress sets to lists instead, to be able to
+        use \texttt{.get(idx)}
+    \item Implemented a simple round-robin based load balancing using a volatile
+        incremented variable, which defers to the master server after enough
+        tries resulting in time-outs. The strategy also ensures that non-timeout
+        related exceptions propagate immediately and cause failure.
+    \item Changed SlaveCertainBookStore to implement ReplicatedStockManager and
+        ReplicatedBookStore instead of the read-only variants.
+    \item Added handling of update requests to slaves, through the same book
+        tags as the master server uses, and implementation through the standard
+        methods offered by ReplicatedStockManager and ReplicatedBookStore.
+    \item Added a new string constant to BookStoreClientConstants to represent
+        failure to issue a read-request to the cluster, which triggers after a
+        threshhold of tries is exhausted.
+    \item Implemented concurrent handling of proxy requests by giving each HTTP
+        Proxy a HttpClient, which is passed to the Callable that performs the
+        actual query. The BookStoreUtility.SendAndRecv will block on the
+        ContentExchange, while other requests get fulfilled by the HttpClient.
+    \item TODO: Authenticate that a write-related request is really coming from
+        the Master server.
+    \item TODO: Testing.
+\end{itemize}

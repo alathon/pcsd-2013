@@ -147,10 +147,6 @@ public class CertainBookStore implements BookStore, StockManager {
 		return;
 	}
 
-	public synchronized void clearBooks() {
-		bookMap = new HashMap<Integer, BookStoreBook>();
-	}
-
 	public synchronized void buyBooks(Set<BookCopy> bookCopiesToBuy)
 			throws BookStoreException {
 		if (bookCopiesToBuy == null) {
